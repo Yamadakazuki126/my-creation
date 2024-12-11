@@ -19,4 +19,7 @@ public class SQLiteServlet extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher("/dbweb/result.jsp");
 		rd.forward(req, res);
     }
+	public void doGet(HttpServletRequest req, HttpServletResponse res)
+	 throws IOException, ServletException{
+		 doPost(req,res);
 }

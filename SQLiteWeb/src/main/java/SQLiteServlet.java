@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import bean.DTO;
 
-@WebServlet("/src/main/java/sqlite")
+@WebServlet("/sqlite")
 public class SQLiteServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 	 throws IOException, ServletException{

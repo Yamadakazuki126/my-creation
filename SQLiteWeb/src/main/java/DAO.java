@@ -7,7 +7,7 @@ import bean.DTO;
 import bean.dbBean;
 
 public class DAO {
-	 String dbPath = "book/book.db";  
+	 String dbPath = "/book/book.db";  
      String url = "jdbc:sqlite:" + dbPath;
      private Connection conn = null;
      

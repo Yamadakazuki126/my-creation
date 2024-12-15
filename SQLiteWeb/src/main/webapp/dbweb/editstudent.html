@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>入力画面</title>
+</head>
+<body>
+  <h2>生徒の情報を更新します</h2>
+  <form action="/SQLiteWeb/src/main/java/editStudent" method="post" id="studentForm">
+    番号　<input type="number" name="no" min="1" max="9999" id="no" /><br />
+    名前　<input type="text" name="name" pattern="^[a-zA-Zぁ-んァ-ヶ一-龥々ー]+$" /><br />
+    クラス<input type="text" name="room" pattern="^\d{1,}-\d{1,}$" /><br />
+    点数　<input type="number" name="score" min="0" max="100" /><br /><br />
+    
+    <input type="submit" name="btn" value="追加" />
+    <input type="submit" name="btn" value="修正" />
+    <input type="submit" name="btn" value="削除" />
+    <input type="submit" name="btn" value="表示" />
+  </form>
+
+  <script>
+    document.getElementById("studentForm").addEventListener("submit", function(event) {
+      const form = event.target;
+      const noInput = form.querySelector('input[name="no"]');
+      const nameInput = form.querySelector('input[name="name"]');
+      const roomInput = form.querySelector('input[name="room"]');
+      const scoreInput = form.querySelector('input[name="score"]');
+      const submitButton = event.submitter; // 送信されたボタンを取得
+
+      // ボタンの種類に応じて必須フィールドを設定
+      switch (submitButton.value) {
+        case "表示":
+          // 表示の場合はnoフィールドも空欄で送信可能に
+          noInput.required = false;
+          noInput.removeAttribute("min");
+          noInput.removeAttribute("max");
+          nameInput.required = false;
+          roomInput.required = false;
+          scoreInput.required = false;
+          break;
+          
+        case "削除":
+          // 削除の場合はnoのみ必須
+          noInput.required = true;
+          noInput.setAttribute("min", "1");
+          noInput.setAttribute("max", "9999");
+          nameInput.required = false;
+          roomInput.required = false;
+          scoreInput.required = false;
+          break;
+          
+        case "追加":
+        case "修正":
+          // 追加または修正の場合は全て必須
+          noInput.required = true;
+          noInput.setAttribute("min", "1");
+          noInput.setAttribute("max", "9999");
+          nameInput.required = true;
+          roomInput.required = true;
+          scoreInput.required = true;
+          break;
+      }
+
+      // ネイティブバリデーションを確認
+      if (!form.checkValidity()) {
+        alert("入力に誤りがあります。再確認してください。");
+        event.preventDefault(); // フォーム送信をキャンセル
+        return;
+      }
+    });
+  </script>
+</body>
+</html>
+

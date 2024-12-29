@@ -23,7 +23,6 @@ public class Login extends HttpServlet {
 		RequestDispatcher rd;
 		if(resultPass != null && pass.equals(resultPass)) {
 			userID = adao.getID(name);
-			//index.javaに移動してその後index.jspかも
 			rd = req.getRequestDispatcher("/index");
 			rd.forward(req, res);
 		} else {

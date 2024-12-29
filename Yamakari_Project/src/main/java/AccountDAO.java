@@ -6,9 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AccountDAO {
+	//accountテーブルを作成してください
 	final String URL = "jdbc:mysql://localhost/YamakariDB";
-	final String USER = "root";
-	final String PASS = "ymdkzk43";
+	final String USER = "";
+	final String PASS = "";
 		
 	Connection con = null;
 	

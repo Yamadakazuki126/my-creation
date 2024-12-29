@@ -7,6 +7,7 @@ import bean.GoodsBean;
 import bean.GoodsDTO;
 
 public class GoodsDAO extends AccountDAO {
+	//goodsテーブルを作成してください
 	
 	public String insertGoods(String name, int price, String category, String fileName, int userID) {
 		String result = "商品の登録が完了しました！";

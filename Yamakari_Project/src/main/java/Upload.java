@@ -32,7 +32,7 @@ public class Upload extends HttpServlet {
 
         if (originalFileName != null && !originalFileName.isEmpty()) {
             // プロジェクトのルートディレクトリのパスを指定
-            String projectPath = "/Users/yamadakazuki/アプリケーション/Eclipse_2024-09.app/Contents/workspace/Yamakari_Project"; 
+            String projectPath = ""; 
             String uploadPath = projectPath + "/src/main/webapp/view/img";
 
             // 保存先のディレクトリを作成
@@ -118,7 +118,7 @@ public class Upload extends HttpServlet {
 
     public static void deleteFile(String fileName) {
         // プロジェクトのルートディレクトリのパスを指定
-        String projectPath = "/Users/yamadakazuki/アプリケーション/Eclipse_2024-09.app/Contents/workspace/Yamakari_Project"; 
+        String projectPath = ""; 
         String uploadPath = projectPath + "/src/main/webapp/view/img";
         
         // 削除するファイルのパス

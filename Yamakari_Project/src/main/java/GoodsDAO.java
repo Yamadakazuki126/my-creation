@@ -7,7 +7,6 @@ import bean.GoodsBean;
 import bean.GoodsDTO;
 
 public class GoodsDAO extends AccountDAO {
-	//goodsテーブルを作成してください
 	
 	public String insertGoods(String name, int price, String category, String fileName, int userID) {
 		String result = "商品の登録が完了しました！";
@@ -109,15 +108,16 @@ public class GoodsDAO extends AccountDAO {
 		try (PreparedStatement pstmt = con.prepareStatement("DELETE FROM goods WHERE id=?")) {
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
-			updateID();
+			updateID(id);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		disconnect();
 	}
 	
-	private void updateID() {
-		try (PreparedStatement pstmt = con.prepareStatement("UPDATE goods SET id = id-1;")){
+	private void updateID(int id) {
+		try (PreparedStatement pstmt = con.prepareStatement("UPDATE goods SET id = id-1 WHERE id > ?;")){
+			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();
